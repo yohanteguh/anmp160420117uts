@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/itemDaftarBuku">
+
+    <fragment
+        android:id="@+id/itemDaftarBuku"
+        android:name="com.example.anmp160420117uts.view.DaftarBukuFragment"
+        android:label="Daftar Buku"
+        tools:layout="@layout/fragment_daftar_buku" >
+        <action
+            android:id="@+id/action_daftarBukuFragment_to_detailBukuFragment"
+            app:destination="@id/detailBukuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailBukuFragment"
+        android:name="com.example.anmp160420117uts.view.DetailBukuFragment"
+        android:label="Detail Buku"
+        tools:layout="@layout/fragment_detail_buku" >
+        <action
+            android:id="@+id/action_detailBukuFragment_to_itemDaftarBuku"
+            app:destination="@id/itemDaftarBuku"
+            app:popUpTo="@id/itemDaftarBuku"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="judul"
+            app:argType="string" />
+        <argument
+            android:name="penulis"
+            app:argType="string" />
+        <argument
+            android:name="kategori"
+            app:argType="string" />
+        <argument
+            android:name="tahunTerbit"
+            app:argType="string" />
+        <argument
+            android:name="deskripsi"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemKategoriBuku"
+        android:name="com.example.anmp160420117uts.view.KategoriBukuFragment"
+        android:label="Kategori Buku"
+        tools:layout="@layout/fragment_kategori_buku" >
+        <action
+            android:id="@+id/action_itemKategoriBuku_to_daftarBukuKategoriFragment"
+            app:destination="@id/daftarBukuKategoriFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/daftarBukuKategoriFragment"
+        android:name="com.example.anmp160420117uts.view.DaftarBukuKategoriFragment"
+        android:label="fragment_daftar_buku_kategori"
+        tools:layout="@layout/fragment_daftar_buku_kategori" >
+        <action
+            android:id="@+id/action_daftarBukuKategoriFragment_to_detailBukuFragment"
+            app:destination="@id/detailBukuFragment" />
+        <argument
+            android:name="kategori"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemAkun"
+        android:name="com.example.anmp160420117uts.view.AkunFragment"
+        android:label="Akun"
+        tools:layout="@layout/fragment_akun">
+        <action
+            android:id="@+id/action_itemAkun_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="user" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.anmp160420117uts.view.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_itemAkun"
+            app:destination="@id/itemAkun"
+            app:popUpTo="@id/itemAkun"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
